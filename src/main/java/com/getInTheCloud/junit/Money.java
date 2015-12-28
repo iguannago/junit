@@ -15,6 +15,8 @@ public final class Money {
     public static Money createMoney(int amount, String currency) {
         if (amount < 0)
             throw new IllegalArgumentException();
+        if ((currency == null)||(currency.isEmpty()))
+            throw new IllegalArgumentException();
         return new Money(amount, currency);
     }
 

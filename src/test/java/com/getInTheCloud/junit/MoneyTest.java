@@ -58,4 +58,16 @@ public class MoneyTest {
         };
     }
 
+    @Test(expected = IllegalArgumentException.class)
+    @Parameters(method = "getInvalidCurrency")
+    public void constructorWithInvalidCurrencyTest(String invalidCurrency) {
+        money = Money.createMoney(10, invalidCurrency);
+    }
+
+    private static final Object[] getInvalidCurrency() {
+        return new String[][] {
+                {""}, {null}
+        };
+    }
+
 }

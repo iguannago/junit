@@ -3,13 +3,19 @@ package com.getInTheCloud.junit;
 /**
  * Created by davicres on 22/10/2015.
  */
-public class Money {
+public final class Money {
     private final int amount;
     private final String currency;
 
-    public Money(int amount, String currency) {
+    private Money(int amount, String currency) {
         this.amount = amount;
         this.currency = currency;
+    }
+
+    public static Money createMoney(int amount, String currency) {
+        if (amount < 0)
+            throw new IllegalArgumentException();
+        return new Money(amount, currency);
     }
 
     public int getAmount() {
@@ -48,8 +54,8 @@ public class Money {
     }
 
     public static void main(String[] args) {
-        Money onePound = new Money(1, "€");
-        Money oneEuro = new Money(1, "€");
+        Money onePound = createMoney(1, "€");
+        Money oneEuro = createMoney(1, "€");
         System.out.println("oneEuro: " + oneEuro);
         System.out.println("onePound: " + onePound);
         if (oneEuro.equals(onePound))

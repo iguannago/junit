@@ -30,32 +30,17 @@ public class MoneyTest {
      * This is making use of the Parameterised Testing framework
      */
     @Test
-    @Parameters(method = "getMoney")
+    @Parameters({"0, USD", "10, USD", "20, GBP", "30, EUR"})
     public void constructorWithDifferentValuesTest(int amount, String currency) {
         money = Money.createMoney(amount, currency);
         assertEquals(amount, money.getAmount());
         assertEquals(currency, money.getCurrency());
     }
 
-    private static final Object[] getMoney() {
-        return new Object[] {
-                new Object[] {0, "USD"},
-                new Object[] {10, "USD"},
-                new Object[] {20, "GBP"},
-                new Object[] {30, "EUR"}
-        };
-    }
-
     @Test(expected = IllegalArgumentException.class)
-    @Parameters(method = "getInvalidAmount")
+    @Parameters({"-1", "-10", "-19873"})
     public void constructorWithInvalidAmountTest(int invalidAmount) {
         money = Money.createMoney(invalidAmount, "USD");
-    }
-
-    private static final Object[] getInvalidAmount() {
-        return new Integer[][] {
-                {-1}, {-10}, {-19873}
-        };
     }
 
     @Test(expected = IllegalArgumentException.class)

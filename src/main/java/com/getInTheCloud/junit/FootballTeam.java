@@ -1,5 +1,10 @@
 package com.getInTheCloud.junit;
 
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
+import java.util.List;
+
 /**
  * Created by davicres on 17/11/2016.
  */
@@ -31,5 +36,17 @@ public final class FootballTeam implements Comparable<FootballTeam> {
         return "FootballTeam{" +
                 "gamesWon=" + gamesWon +
                 '}';
+    }
+
+    public static void main(String[] args) {
+        FootballTeam Barcelona = FootballTeam.build(4);
+        FootballTeam Madrid = FootballTeam.build(3);
+        FootballTeam AtlMadrid = FootballTeam.build(5);
+        List<FootballTeam> teams = new ArrayList<>(3);
+        teams.add(Barcelona);
+        teams.add(Madrid);
+        teams.add(AtlMadrid);
+        Collections.sort(teams, Comparator.<FootballTeam>reverseOrder());
+        System.out.println("La liga table showing at the top the team with more games won: " + teams);
     }
 }

@@ -21,8 +21,9 @@ public class FootballTeamTest {
     }
 
     @Test(expected = IllegalArgumentException.class)
-    public void constructorInvalidArgumentTest() {
-        FootballTeam.build(-1);
+    @Parameters({"-1", "-10", "-30"})
+    public void constructorInvalidArgumentTest(int gamesWon) {
+        FootballTeam.build(gamesWon);
     }
 
 }

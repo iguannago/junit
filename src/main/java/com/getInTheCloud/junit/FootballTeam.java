@@ -11,7 +11,7 @@ public final class FootballTeam {
     }
 
     public static FootballTeam build(int gamesWon) {
-        if (gamesWon == -1) {
+        if (gamesWon < 0) {
             throw new IllegalArgumentException("negative number is not valid");
         }
         return new FootballTeam(gamesWon);

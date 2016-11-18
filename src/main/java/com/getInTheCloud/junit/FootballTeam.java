@@ -22,13 +22,9 @@ public final class FootballTeam implements Comparable<FootballTeam> {
     }
 
     public int compareTo(FootballTeam o) {
-        if (gamesWon < o.gamesWon) {
-            return -1;
-        } else if (o.getGamesWon() == gamesWon) {
-            return 0;
-        }
-        return 1;
+        return gamesWon - o.getGamesWon();
     }
+
 
     @Override
     public String toString() {

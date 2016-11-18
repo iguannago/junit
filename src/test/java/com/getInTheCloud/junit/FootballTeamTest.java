@@ -31,7 +31,7 @@ public class FootballTeamTest {
     }
 
     @Test
-    public void footballTeamWith1GamesWonIsGreaterThanFootbalTeamWith0GamesWonTest() {
+    public void footballTeamWith1GamesWonIsGreaterThanFootballTeamWith0GamesWonTest() {
         FootballTeam footballTeamWithZeroGamesWon = FootballTeam.build(0);
         FootballTeam footballTeamWithOneGamesWon = FootballTeam.build(1);
         List<FootballTeam> footballTeams = new ArrayList<FootballTeam>(2);

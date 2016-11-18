@@ -17,6 +17,8 @@ import static org.junit.Assert.assertEquals;
 @RunWith(JUnitParamsRunner.class)
 public class FootballTeamTest {
 
+    private final List<FootballTeam> footballTeams = buildFootballTeamList();
+
     @Test
     @Parameters({"0, 0", "3, 3", "5, 5"})
     public void constructorTest(int gamesWon, int expected) {
@@ -31,16 +33,24 @@ public class FootballTeamTest {
     }
 
     @Test
-    public void footballTeamWith1GamesWonIsGreaterThanFootballTeamWith0GamesWonTest() {
-        FootballTeam footballTeamWithZeroGamesWon = FootballTeam.build(0);
-        FootballTeam footballTeamWithOneGamesWon = FootballTeam.build(1);
-        List<FootballTeam> footballTeams = new ArrayList<FootballTeam>(2);
-        footballTeams.add(footballTeamWithZeroGamesWon);
-        footballTeams.add(footballTeamWithOneGamesWon);
+    public void footballTeamWithMoreGamesWonAreGreaterThanFootballTeamWithLessGamesWonTest() {
         System.out.println("before sorting... " + footballTeams);
         Collections.sort(footballTeams);
         System.out.println("after sorting... " + footballTeams);
         assertEquals(1, footballTeams.get(0).getGamesWon());
+    }
+
+    private List<FootballTeam> buildFootballTeamList() {
+        FootballTeam footballTeam_0 = FootballTeam.build(0);
+        FootballTeam footballTeam_1 = FootballTeam.build(1);
+        List<FootballTeam> footballTeams = new ArrayList<FootballTeam>(2);
+        footballTeams.add(footballTeam_0);
+        footballTeams.add(footballTeam_1);
+        return footballTeams;
+    }
+
+    public void footballTeamsWithSameGamesWonAreEqualTest() {
+
     }
 
 }

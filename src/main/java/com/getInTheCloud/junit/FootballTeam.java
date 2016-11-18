@@ -3,7 +3,7 @@ package com.getInTheCloud.junit;
 /**
  * Created by davicres on 17/11/2016.
  */
-public final class FootballTeam implements Comparable<FootballTeam>{
+public final class FootballTeam implements Comparable<FootballTeam> {
     private final int gamesWon;
 
     private FootballTeam(int gamesWon) {
@@ -26,9 +26,8 @@ public final class FootballTeam implements Comparable<FootballTeam>{
             return -1;
         } else if (o.getGamesWon() == gamesWon) {
             return 0;
-        } else {
-            return 1;
         }
+        return 1;
     }
 
     @Override

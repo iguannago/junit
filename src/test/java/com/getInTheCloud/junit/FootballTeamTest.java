@@ -10,6 +10,7 @@ import java.util.Collections;
 import java.util.List;
 
 import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertTrue;
 
 /**
  * Created by davicres on 17/11/2016.
@@ -38,6 +39,13 @@ public class FootballTeamTest {
         Collections.sort(footballTeams);
         System.out.println("after sorting... " + footballTeams);
         assertEquals(1, footballTeams.get(0).getGamesWon());
+        assertTrue(footballTeams.get(1).compareTo(footballTeams.get(0)) == 1);
+    }
+
+    @Test
+    public void footballTeamsWithSameGamesWonAreEqualTest() {
+        List<FootballTeam> footballTeams = buildFootballTeamList(2, 2);
+        assertTrue(footballTeams.get(0).compareTo(footballTeams.get(1)) == 0);
     }
 
     private List<FootballTeam> buildFootballTeamList(int gamesWonTeam0, int gamesWonTeam1) {
@@ -47,10 +55,6 @@ public class FootballTeamTest {
         footballTeams.add(footballTeam_0);
         footballTeams.add(footballTeam_1);
         return footballTeams;
-    }
-
-    @Test
-    public void footballTeamsWithSameGamesWonAreEqualTest() {
     }
 
 }

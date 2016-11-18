@@ -22,7 +22,7 @@ public class FootballTeamTest {
 
     @Test(expected = IllegalArgumentException.class)
     public void constructorInvalidArgumentTest() {
-        FootballTeam footballTeam = FootballTeam.build(-1);
+        FootballTeam.build(-1);
     }
 
 }

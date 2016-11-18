@@ -22,7 +22,7 @@ public final class FootballTeam implements Comparable<FootballTeam>{
     }
 
     public int compareTo(FootballTeam o) {
-        if (o.getGamesWon() < gamesWon) {
+        if (gamesWon < o.gamesWon) {
             return -1;
         } else if (o.getGamesWon() == gamesWon) {
             return 0;

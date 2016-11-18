@@ -6,7 +6,6 @@ import org.junit.Test;
 import org.junit.runner.RunWith;
 
 import java.util.ArrayList;
-import java.util.Collections;
 import java.util.List;
 
 import static org.junit.Assert.assertEquals;
@@ -34,11 +33,6 @@ public class FootballTeamTest {
     @Test
     public void footballTeamWithMoreGamesWonAreGreaterThanFootballTeamWithLessGamesWonTest() {
         List<FootballTeam> footballTeams = buildFootballTeamList(0, 1);
-        System.out.println("before sorting... " + footballTeams);
-        assertEquals(0, footballTeams.get(0).getGamesWon());
-        Collections.sort(footballTeams);
-        System.out.println("after sorting... " + footballTeams);
-        assertEquals(1, footballTeams.get(0).getGamesWon());
         assertTrue(footballTeams.get(1).compareTo(footballTeams.get(0)) == 1);
     }
 
@@ -48,12 +42,18 @@ public class FootballTeamTest {
         assertTrue(footballTeams.get(0).compareTo(footballTeams.get(1)) == 0);
     }
 
-    private List<FootballTeam> buildFootballTeamList(int gamesWonTeam0, int gamesWonTeam1) {
-        FootballTeam footballTeam_0 = FootballTeam.build(gamesWonTeam0);
-        FootballTeam footballTeam_1 = FootballTeam.build(gamesWonTeam1);
+    @Test
+    public void footballTeamsWithLessGamesWonAreLessThanTest() {
+        List<FootballTeam> footballTeams = buildFootballTeamList(1, 2);
+        assertTrue(footballTeams.get(0).compareTo(footballTeams.get(1)) == -1);
+    }
+
+    private List<FootballTeam> buildFootballTeamList(int gamesWonTeamA, int gamesWonTeamB) {
+        FootballTeam footballTeamA = FootballTeam.build(gamesWonTeamA);
+        FootballTeam footballTeamB = FootballTeam.build(gamesWonTeamB);
         List<FootballTeam> footballTeams = new ArrayList<FootballTeam>(2);
-        footballTeams.add(footballTeam_0);
-        footballTeams.add(footballTeam_1);
+        footballTeams.add(footballTeamA);
+        footballTeams.add(footballTeamB);
         return footballTeams;
     }
 

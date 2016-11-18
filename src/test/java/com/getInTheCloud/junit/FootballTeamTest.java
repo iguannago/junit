@@ -20,4 +20,9 @@ public class FootballTeamTest {
         assertEquals(expected, footballTeam.getGamesWon());
     }
 
+    @Test(expected = IllegalArgumentException.class)
+    public void constructorInvalidArgumentTest() {
+        FootballTeam footballTeam = FootballTeam.build(-1);
+    }
+
 }
